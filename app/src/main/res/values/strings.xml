@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CourseScheduler</string>
+    <string name="terms">Terms</string>
+    <string name="welcome_to_the_wgu_term_scheduler_app">Welcome to the WGU Term Scheduler App</string>
+    <string name="main_image">Main Image</string>
+    <string name="my_terms_list">My Terms List</string>
+    <string name="courses">Courses</string>
+    <string name="assessments">Assessments</string>
 </resources>

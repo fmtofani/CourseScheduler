@@ -9,13 +9,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".UI.DetailedAssessment"
+            android:label="Detailed Assessment">
+        </activity>
+
+        <activity
+            android:name=".UI.DetailedTerm"
+            android:label="Detailed Term">
+        </activity>
+
+        <activity
+            android:name=".UI.DetailedCourse"
+            android:label="Detailed Course">
+        </activity>
+
+        <activity
+            android:name=".UI.AssessmentList"
+            android:label="Assessment List">
+        </activity>
+
+        <activity
+            android:name=".UI.CourseList"
+            android:label="Course List">
+        </activity>
+
+        <activity
+            android:name=".UI.TermsList"
+            android:label="@string/my_terms_list">
+        </activity>
+
+        <activity
+            android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
