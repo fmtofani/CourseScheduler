@@ -7,26 +7,26 @@ import android.view.MenuItem;
 
 import com.student.wgu.C196.ftofani.R;
 
-public class TermsList extends AppCompatActivity {
-
-    private MenuItem item;
+public class EditAssessment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms_list);
+        setContentView(R.layout.activity_edit_assessment);
         //add back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
-        item = Item;
-        switch (item.getItemId()) {
+        switch (Item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(Item);
     }
+
 }

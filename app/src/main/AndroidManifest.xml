@@ -9,46 +9,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
-
+        <activity
+            android:name=".UI.ListInstructor"
+            android:label="Instructor List"/>
+        <activity
+            android:name=".UI.EditInstructor"
+            android:label="Edit Instructor" />
+        <activity
+            android:name=".UI.EditAssessment"
+            android:label="Edit Assessment" />
+        <activity
+            android:name=".UI.EditCourse"
+            android:label="Edit Course" />
+        <activity
+            android:name=".UI.EditTerm"
+            android:label="Edit Term" />
         <activity
             android:name=".UI.DetailedAssessment"
-            android:label="Detailed Assessment">
-        </activity>
-
+            android:label="Detailed Assessment" />
         <activity
             android:name=".UI.DetailedTerm"
-            android:label="Detailed Term">
-        </activity>
-
+            android:label="Detailed Term" />
         <activity
             android:name=".UI.DetailedCourse"
-            android:label="Detailed Course">
-        </activity>
-
+            android:label="Detailed Course" />
         <activity
-            android:name=".UI.AssessmentList"
-            android:label="Assessment List">
-        </activity>
-
+            android:name=".UI.ListAssessment"
+            android:label="Assessment List" />
         <activity
-            android:name=".UI.CourseList"
-            android:label="Course List">
-        </activity>
-
+            android:name=".UI.ListCourse"
+            android:label="Course List" />
         <activity
-            android:name=".UI.TermsList"
-            android:label="@string/my_terms_list">
-        </activity>
-
+            android:name=".UI.ListTerm"
+            android:label="@string/my_terms_list" />
         <activity
-            android:name=".UI.MainActivity">
+            android:name=".UI.MainActivity"
+            android:label="Course Scheduler">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

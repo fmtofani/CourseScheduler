@@ -2,14 +2,14 @@ package com.student.wgu.C196.ftofani.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.student.wgu.C196.ftofani.R;
 
-public class AssessmentList extends AppCompatActivity {
-
-    private MenuItem item;
+public class ListAssessment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,16 @@ public class AssessmentList extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
-        item = Item;
-        switch (item.getItemId()) {
+        switch (Item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(Item);
     }
 
+    public void goToEditAssessments(View view) {
+        Intent intent = new Intent(ListAssessment.this, EditAssessment.class);
+        startActivity(intent);
+    }
 }

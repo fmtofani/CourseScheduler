@@ -9,8 +9,6 @@ import com.student.wgu.C196.ftofani.R;
 
 public class DetailedCourse extends AppCompatActivity {
 
-    private MenuItem item;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +20,12 @@ public class DetailedCourse extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
-        item = Item;
-        switch (item.getItemId()) {
+        switch (Item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(Item);
     }
 
 }

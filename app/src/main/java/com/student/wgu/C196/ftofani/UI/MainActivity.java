@@ -20,19 +20,21 @@ public class MainActivity extends AppCompatActivity {
     //Add new Empty Activity
     //Always Import R with alt+enter
     //Change name in manifest for title bar
-    //55:50 Create Landscape variation
+    //55:50 1:11 Create Landscape variation
+
+    //Goto Terms Intent
     public void goToTerms(View view) {
-        Intent intent = new Intent(MainActivity.this, TermsList.class);
+        Intent intent = new Intent(MainActivity.this, ListTerm.class);
         startActivity(intent);
     }
-
+    //Goto Courses Intent
     public void goToCourse(View view) {
-        Intent intent = new Intent(MainActivity.this, CourseList.class);
+        Intent intent = new Intent(MainActivity.this, ListCourse.class);
         startActivity(intent);
     }
-
+    //Goto Assessment Intent
     public void goToAssessment(View view) {
-        Intent intent = new Intent(MainActivity.this, AssessmentList.class);
+        Intent intent = new Intent(MainActivity.this, ListAssessment.class);
         startActivity(intent);
     }
 }

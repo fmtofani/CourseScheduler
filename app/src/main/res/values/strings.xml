@@ -6,4 +6,9 @@
     <string name="my_terms_list">My Terms List</string>
     <string name="courses">Courses</string>
     <string name="assessments">Assessments</string>
+    <string name="course_number">Course Number</string>
+    <string name="course_name">Course Name</string>
+    <string name="save">Save</string>
+    <string name="introductory_algebra">Introductory Algebra</string>
+    <string name="c100">C100</string>
 </resources>

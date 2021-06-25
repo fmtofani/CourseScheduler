@@ -7,17 +7,17 @@ import android.view.MenuItem;
 
 import com.student.wgu.C196.ftofani.R;
 
-public class DetailedTerm extends AppCompatActivity {
+public class EditTerm extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_term);
+        setContentView(R.layout.activity_edit_term);
         //add back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
         switch (Item.getItemId()) {
