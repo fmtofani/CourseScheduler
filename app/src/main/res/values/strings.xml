@@ -8,7 +8,11 @@
     <string name="assessments">Assessments</string>
     <string name="course_number">Course Number</string>
     <string name="course_name">Course Name</string>
+    <string name="courseDateStart">Course Start Date</string>
     <string name="save">Save</string>
     <string name="introductory_algebra">Introductory Algebra</string>
     <string name="c100">C100</string>
+    <string name="date">date</string>
+    <string name="channel_name">channelname</string>
+    <string name="channel_description">channeldescription</string>
 </resources>

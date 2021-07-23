@@ -14,6 +14,17 @@
         android:onClick="goToEditCourses"
         app:srcCompat="@drawable/ic_add_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="32dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewListCourse"
+        android:layout_width="409dp"
+        android:layout_height="673dp"
+        android:background="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
 
