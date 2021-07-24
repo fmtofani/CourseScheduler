@@ -1,15 +1,15 @@
 package com.student.wgu.C196.ftofani.DAO;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-
-import com.student.wgu.C196.ftofani.Entities.Thing;
-
+import com.student.wgu.C196.ftofani.Entities.Note;
 import java.util.List;
 
+@Dao
 public interface NoteDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
 
@@ -22,5 +22,8 @@ public interface NoteDAO {
     void delete (Note note);
 
     @Query("SELECT * FROM NOTE_TABLE ORDER BY noteID ASC")
-    List<Thing> getAllNotes();
+    List<Note> getAllNotes();
+
+    @Query("DELETE FROM note_table")
+    void deleteAllNotes();
 }

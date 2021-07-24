@@ -15,10 +15,10 @@
             android:exported="true"></receiver>
 
         <activity
-            android:name=".UI.ListInstructor"
+            android:name=".UI.ListMentor"
             android:label="Instructor List" />
         <activity
-            android:name=".UI.EditInstructor"
+            android:name=".UI.EditMentor"
             android:label="Edit Instructor" />
         <activity
             android:name=".UI.EditAssessment"

@@ -9,7 +9,6 @@ public class Course {
 
     @PrimaryKey(autoGenerate = true)
     private int courseID;
-
     private String courseName;
 
     public Course(int courseID, String courseName) {

@@ -4,24 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import com.student.wgu.C196.ftofani.Database.Repository;
-import com.student.wgu.C196.ftofani.Entities.Thing;
+import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.R;
 
 import java.util.List;
 
 public class ListCourse extends AppCompatActivity {
 
-
     private Repository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +31,14 @@ public class ListCourse extends AppCompatActivity {
 
 
         repository=new Repository(getApplication());
-        List<Thing> allThings=repository.getAllThings();
+        List<Course> allCourses = repository.getAllCourses();
 
         RecyclerView recyclerView=findViewById((R.id.recyclerviewListCourse));
-        final ThingAdapter thingAdapter=new ThingAdapter(this);
-        recyclerView.setAdapter(thingAdapter);
+        final CourseAdapter courseAdapter=new CourseAdapter(this);
+        recyclerView.setAdapter(courseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        thingAdapter.setThings(allThings);
+        courseAdapter.setCourses(allCourses);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,12 +56,13 @@ public class ListCourse extends AppCompatActivity {
 
             case R.id.refresh:
                 repository=new Repository(getApplication());
-                List<Thing> allThings=repository.getAllThings();
-                final ThingAdapter thingAdapter=new ThingAdapter(this);
+                List<Course> allCourses=repository.getAllCourses();
+                final CourseAdapter courseAdapter=new CourseAdapter(this);
                 RecyclerView recyclerView=findViewById(R.id.recyclerviewListCourse);
-                recyclerView.setAdapter(thingAdapter);
+                recyclerView.setAdapter(courseAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                thingAdapter.setThings(allThings);
+                courseAdapter.setCourses(allCourses);
+                return true;
         }
         return super.onOptionsItemSelected(Item);
     }

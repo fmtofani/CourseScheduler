@@ -9,10 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.student.wgu.C196.ftofani.Database.Repository;
-import com.student.wgu.C196.ftofani.Entities.Thing;
 import com.student.wgu.C196.ftofani.R;
 
 import java.text.ParseException;
@@ -21,12 +19,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class EditCourse extends AppCompatActivity {
-    String name;
+ /*   String name;
     EditText editName;
     EditText courseDateStart;
     int id;
-    Repository repository;
-    Thing currentThing;
+   // Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +33,10 @@ public class EditCourse extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        name=getIntent().getStringExtra("name");
-        editName=findViewById(R.id.courseName);
-        courseDateStart=findViewById(R.id.courseDateStart);
-        repository=new Repository(getApplication());
+//        name=getIntent().getStringExtra("name");
+  //      editName=findViewById(R.id.courseName);
+    //    courseDateStart=findViewById(R.id.courseDateStart);
+      //  repository=new Repository(getApplication());
 
 
     }
@@ -85,18 +82,18 @@ public class EditCourse extends AppCompatActivity {
                 PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
                 return true;
 //Lesson 4 1:36
-    /*        case R.id.delete:
-                for(Thing p:repository.getAllThings()) {
-                    if(p.getThingID()==getIntent().getIntExtra("id, -1"))currentThing=p;
-                }
-                if(p.getCourse().size==0) {
-                    repository.delete(currentThing);
-                }
-                else {
-                    Toast.makeText(ListCourse.this, "Can't delete course attached to term", Toast.LENGTH_LONG).show());
-                }
-                return true;
-*/
+    //        case R.id.delete:
+      //          for(Thing p:repository.getAllThings()) {
+        //            if(p.getThingID()==getIntent().getIntExtra("id, -1"))currentThing=p;
+          //      }
+            //    if(p.getCourse().size==0) {
+              //      repository.delete(currentThing);
+                //}
+  //              else {
+    //                Toast.makeText(ListCourse.this, "Can't delete course attached to term", Toast.LENGTH_LONG).show());
+      //          }
+        //        return true;
+
         }
         return super.onOptionsItemSelected(Item);
     }
@@ -105,14 +102,36 @@ public class EditCourse extends AppCompatActivity {
     public void saveCourse(View view) {
         String screenName = editName.getText().toString();
         if (name == null) {
-            Thing newThing = new Thing(++id, screenName);
-            repository.insert(newThing);
+            //Thing newThing = new Thing(++id, screenName);
+            //repository.insert(newThing);
         } else {
-            Thing oldThing = new Thing(getIntent().getIntExtra("thingID", -1), screenName);
-            repository.update(oldThing);
+            //Thing oldThing = new Thing(getIntent().getIntExtra("thingID", -1), screenName);
+            //repository.update(oldThing);
         }
     }
 
     public void date(View view) {
     }
+*/
+
+        @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_course);
+        //add back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem Item) {
+        switch (Item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(Item);
+    }
+
 }

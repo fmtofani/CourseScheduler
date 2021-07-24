@@ -1,27 +1,22 @@
 package com.student.wgu.C196.ftofani.Database;
 
 import android.content.Context;
-
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
 import com.student.wgu.C196.ftofani.DAO.AssessmentDAO;
 import com.student.wgu.C196.ftofani.DAO.CourseDAO;
 import com.student.wgu.C196.ftofani.DAO.MentorDAO;
 import com.student.wgu.C196.ftofani.DAO.NoteDAO;
 import com.student.wgu.C196.ftofani.DAO.TermDAO;
-import com.student.wgu.C196.ftofani.DAO.ThingDao;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 import com.student.wgu.C196.ftofani.Entities.Note;
 import com.student.wgu.C196.ftofani.Entities.Term;
-import com.student.wgu.C196.ftofani.Entities.Thing;
 
-@Database(entities = {Thing.class, Term.class, Course.class, Assessment.class, Mentor.class, Note.class}, version = 2, exportSchema = false)
+@Database(entities = {Term.class, Course.class, Assessment.class, Mentor.class, Note.class}, version = 1, exportSchema = false)
 public abstract class DatabaseBuilder extends RoomDatabase {
-    public abstract ThingDao thingDAO();
     public abstract TermDAO termDAO();
     public abstract CourseDAO courseDAO();
     public abstract AssessmentDAO assessmentDAO();

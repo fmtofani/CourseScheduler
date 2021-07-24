@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey;
 @Entity(tableName="assessment_table")
 public class Assessment {
 
+
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
-
     private String assessmentName;
 
-    public Assessment(int asssessmentID, String assessmentName) {
+    public Assessment(int assessmentID, String assessmentName) {
         this.assessmentID = assessmentID;
         this.assessmentName = assessmentName;
     }

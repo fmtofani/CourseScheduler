@@ -1,67 +1,44 @@
 package com.student.wgu.C196.ftofani.Database;
 
 import android.app.Application;
-
 import com.student.wgu.C196.ftofani.DAO.AssessmentDAO;
 import com.student.wgu.C196.ftofani.DAO.CourseDAO;
 import com.student.wgu.C196.ftofani.DAO.MentorDAO;
 import com.student.wgu.C196.ftofani.DAO.NoteDAO;
 import com.student.wgu.C196.ftofani.DAO.TermDAO;
-import com.student.wgu.C196.ftofani.DAO.ThingDao;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 import com.student.wgu.C196.ftofani.Entities.Note;
 import com.student.wgu.C196.ftofani.Entities.Term;
-import com.student.wgu.C196.ftofani.Entities.Thing;
-
 import java.util.List;
 
 public class Repository {
-    private ThingDao mThingDAO;
-    private List<Thing> mAllThings;
     private TermDAO mTermDAO;
     private List<Term> mAllTerms;
     private CourseDAO mCourseDAO;
     private List<Course> mAllCourses;
     private AssessmentDAO mAssessmentDAO;
     private List<Assessment> mAllAssessments;
-    private MentorDAO mMentorDao;
+    private MentorDAO mMentorDAO;
     private List<Mentor> mAllMentors;
-    private NoteDAO mNoteDao;
+    private NoteDAO mNoteDAO;
     private List<Note> mAllNotes;
-
-    //private static int NUMBER_OF_THREADS=4;
-   // static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
     public Repository(Application application) {
         DatabaseBuilder db = DatabaseBuilder.getDatabase(application);
-        mThingDAO=db.thingDAO();
         mTermDAO=db.termDAO();
+        mCourseDAO= db.courseDAO();
+        mAssessmentDAO=db.assessmentDAO();
+        mMentorDAO=db.mentorDAO();
+        mNoteDAO=db.noteDAO();
     }
 
-    //Delete once working
-    public List<Thing> getAllThings() {
-        mAllThings=mThingDAO.getAllThings();
-        return mAllThings;
-    }
-
-    public void insert(Thing thing) {
-            mThingDAO.insert(thing);
-    }
-
-    public void delete(Thing thing) {
-            mThingDAO.delete(thing);
-    }
-
-    public void update(Thing thing) {
-            mThingDAO.update(thing);
-    }
 
     //Terms
     public List<Term> getAllTerms(){
-        mAllTerms=mTermDAO.getAllTerms(){
+        mAllTerms=mTermDAO.getAllTerms();
         return mAllTerms;
     }
 
@@ -79,7 +56,7 @@ public class Repository {
 
     //Courses
     public List<Course> getAllCourses(){
-        mAllCourses=mCourseDAO.getAllCourses(){
+        mAllCourses=mCourseDAO.getAllCourses();
             return mAllCourses;
     }
 
@@ -97,7 +74,7 @@ public class Repository {
 
     //Assessments
     public List<Assessment> getAllAssessments(){
-        mAllAssessments=mAssessmentDAO.getAllAssessments(){
+        mAllAssessments=mAssessmentDAO.getAllAssessments();
         return mAllAssessments;
     }
 
@@ -115,7 +92,7 @@ public class Repository {
 
     //Mentors
     public List<Mentor> getAllMentors(){
-        mAllMentors=mMentorDAO.getAllMentors(){
+        mAllMentors=mMentorDAO.getAllMentors();
         return mAllMentors;
     }
 
@@ -133,12 +110,12 @@ public class Repository {
 
     //Notes
     public List<Note> getAllNotes(){
-        mAllNotes=mNoteDAO.getAllNotes(){
-        return mAllMentors;
+        mAllNotes=mNoteDAO.getAllNotes();
+        return mAllNotes;
     }
 
     public void insert(Note note){
-        mNoteDAO.insert(Note);
+        mNoteDAO.insert(note);
     }
 
     public void delete(Note note) {

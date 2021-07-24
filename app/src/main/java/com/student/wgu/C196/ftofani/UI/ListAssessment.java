@@ -1,15 +1,23 @@
 package com.student.wgu.C196.ftofani.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.student.wgu.C196.ftofani.Database.Repository;
+import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.R;
 
+import java.util.List;
+
 public class ListAssessment extends AppCompatActivity {
+
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +27,14 @@ public class ListAssessment extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        repository = new Repository(getApplication());
+        List<Assessment> allAssessments = repository.getAllAssessments();
+
+        RecyclerView recyclerView=findViewById(R.id.recyclerviewListAssessment);
+        final AssessmentAdapter assessmentAdapter=new AssessmentAdapter(this);
+        recyclerView.setAdapter(assessmentAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        assessmentAdapter.setAssissments(allAssessments);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {

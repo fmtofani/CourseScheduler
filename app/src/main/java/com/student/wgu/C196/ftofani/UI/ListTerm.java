@@ -1,15 +1,23 @@
 package com.student.wgu.C196.ftofani.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.student.wgu.C196.ftofani.Database.Repository;
+import com.student.wgu.C196.ftofani.Entities.Term;
 import com.student.wgu.C196.ftofani.R;
 
+import java.util.List;
+
 public class ListTerm extends AppCompatActivity {
+
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +26,16 @@ public class ListTerm extends AppCompatActivity {
         //add back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        repository=new Repository(getApplication());
+        final TermAdapter termAdapter=new TermAdapter(this);
+        List<Term> allTerms = repository.getAllTerms();
+
+        RecyclerView recyclerView=findViewById((R.id.recyclerviewListTerm));
+        recyclerView.setAdapter(termAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        termAdapter.setTerms(allTerms);
+
     }
 
     @Override

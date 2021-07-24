@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.student.wgu.C196.ftofani.Database.Repository;
-import com.student.wgu.C196.ftofani.Entities.Thing;
+import com.student.wgu.C196.ftofani.Entities.Assessment;
+import com.student.wgu.C196.ftofani.Entities.Course;
+import com.student.wgu.C196.ftofani.Entities.Mentor;
+import com.student.wgu.C196.ftofani.Entities.Note;
+import com.student.wgu.C196.ftofani.Entities.Term;
 import com.student.wgu.C196.ftofani.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Start DB
-        //Check DB 1hr
+
         Repository repository = new Repository(getApplication());
-        Thing thing = new Thing(1,"John");
-        repository.insert(thing);
+        Term term = new Term(1, "Math");
+        repository.insert(term);
+        Course course = new Course(1,"English");
+        repository.insert(course);
+        Assessment assessment = new Assessment(3, "project");
+        repository.insert(assessment);
     }
 
     //Add new intent to switch screens 46:00 Lesson 1
@@ -39,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
     //1:08:00 NOTIFY for different
     //1:14 debug
     //
-    //
+    //  <!--   --> comment out xml
+    // learn style
 
 
     //Goto Terms Intent
