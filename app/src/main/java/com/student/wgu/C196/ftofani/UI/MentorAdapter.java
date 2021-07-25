@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
+
 import com.student.wgu.C196.ftofani.R;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 
@@ -17,23 +20,25 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
     class MentorViewHolder extends RecyclerView.ViewHolder {
         private final TextView mentorItemView;
         private final TextView mentorItemView2;
+        private final TextView mentorItemView3;
 
 
         private MentorViewHolder(View itemView) {
             super(itemView);
-            mentorItemView = itemView.findViewById(R.id.courseTextView);
-            mentorItemView2 = itemView.findViewById(R.id.courseTextView2);
+            mentorItemView = itemView.findViewById(R.id.mentorTextView);
+            mentorItemView2 = itemView.findViewById(R.id.mentorTextView2);
+            mentorItemView3 = itemView.findViewById(R.id.mentorTextView3);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     final Mentor current = mMentors.get(position);
                     Intent intent = new Intent(context, EditMentor.class);
+                    intent.putExtra("mentorID", current.getMentorID());
                     intent.putExtra("mentorName", current.getMentorName());
-                 //   intent.putExtra("coursePrice", Double.toString(current.getPartPrice()));
-                    intent.putExtra("position",position);
-                    intent.putExtra("mentorID",current.getMentorID());
-                 //   intent.putExtra("productID", current.getProductID());
+                    intent.putExtra("mentorPhone", current.getMentorPhone());
+                    intent.putExtra("mentorEmail", current.getMentorEmail());
+                    intent.putExtra("mentorCourseID", current.getMentorCourseID());
                     context.startActivity(intent);
                 }
             });
@@ -47,7 +52,7 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
 
     public MentorAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
-        this.context=context;
+        this.context = context;
     }
 
     @Override
@@ -62,11 +67,13 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
         if (mMentors != null) {
             Mentor current = mMentors.get(position);
             holder.mentorItemView.setText(current.getMentorName());
-            holder.mentorItemView2.setText(Integer.toString(current.getMentorID()));
+            holder.mentorItemView2.setText(current.getMentorPhone());
+            holder.mentorItemView3.setText(current.getMentorEmail());
         } else {
             // Covers the case of data not being ready yet.
             holder.mentorItemView.setText("No Word");
             holder.mentorItemView2.setText("No Word");
+            holder.mentorItemView3.setText("No Word");
         }
 
     }

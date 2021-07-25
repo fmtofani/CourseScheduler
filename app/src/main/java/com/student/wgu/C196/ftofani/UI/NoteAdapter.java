@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
+
 import com.student.wgu.C196.ftofani.R;
 import com.student.wgu.C196.ftofani.Entities.Note;
 
@@ -29,11 +32,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                     int position = getAdapterPosition();
                     final Note current = mNotes.get(position);
                     Intent intent = new Intent(context, DetailedCourse.class);
-                    intent.putExtra("courseName", current.getNoteName());
-                 //   intent.putExtra("coursePrice", Double.toString(current.getPartPrice()));
-                    intent.putExtra("position",position);
-                    intent.putExtra("courseID",current.getNoteID());
-                 //   intent.putExtra("productID", current.getProductID());
+                    intent.putExtra("noteID", current.getNoteID());
+                    intent.putExtra("noteName", current.getNoteName());
+                    intent.putExtra("noteBody", current.getNoteBody());
+                    intent.putExtra("noteCourseID", current.getNoteCourseID());
                     context.startActivity(intent);
                 }
             });
@@ -47,7 +49,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     public NoteAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
-        this.context=context;
+        this.context = context;
     }
 
     @Override
@@ -61,8 +63,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     public void onBindViewHolder(NoteViewHolder holder, int position) {
         if (mNotes != null) {
             Note current = mNotes.get(position);
-            holder.noteItemView.setText(current.getNoteName());
-            holder.noteItemView2.setText(Integer.toString(current.getNoteID()));
+            holder.noteItemView.setText(current.getNoteBody());
+            holder.noteItemView2.setText(current.getNoteName());
         } else {
             // Covers the case of data not being ready yet.
             holder.noteItemView.setText("No Word");

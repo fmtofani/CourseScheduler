@@ -1,9 +1,11 @@
 package com.student.wgu.C196.ftofani.Database;
 
 import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
 import com.student.wgu.C196.ftofani.DAO.AssessmentDAO;
 import com.student.wgu.C196.ftofani.DAO.CourseDAO;
 import com.student.wgu.C196.ftofani.DAO.MentorDAO;
@@ -18,9 +20,13 @@ import com.student.wgu.C196.ftofani.Entities.Term;
 @Database(entities = {Term.class, Course.class, Assessment.class, Mentor.class, Note.class}, version = 1, exportSchema = false)
 public abstract class DatabaseBuilder extends RoomDatabase {
     public abstract TermDAO termDAO();
+
     public abstract CourseDAO courseDAO();
+
     public abstract AssessmentDAO assessmentDAO();
+
     public abstract MentorDAO mentorDAO();
+
     public abstract NoteDAO noteDAO();
 
     private static volatile DatabaseBuilder INSTANCE;

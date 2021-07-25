@@ -13,11 +13,13 @@ import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListAssessment extends AppCompatActivity {
 
     private Repository repository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,14 @@ public class ListAssessment extends AppCompatActivity {
         repository = new Repository(getApplication());
         List<Assessment> allAssessments = repository.getAllAssessments();
 
-        RecyclerView recyclerView=findViewById(R.id.recyclerviewListAssessment);
-        final AssessmentAdapter assessmentAdapter=new AssessmentAdapter(this);
-        recyclerView.setAdapter(assessmentAdapter);
+        RecyclerView recyclerView = findViewById(R.id.recyclerviewListAssessment);
+        final AssessmentAdapter adapter = new AssessmentAdapter(this);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        assessmentAdapter.setAssissments(allAssessments);
+        adapter.setAssessments(allAssessments);
+
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
         switch (Item.getItemId()) {

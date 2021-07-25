@@ -27,11 +27,11 @@ public class ListTerm extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        repository=new Repository(getApplication());
-        final TermAdapter termAdapter=new TermAdapter(this);
+        repository = new Repository(getApplication());
+        final TermAdapter termAdapter = new TermAdapter(this);
         List<Term> allTerms = repository.getAllTerms();
 
-        RecyclerView recyclerView=findViewById((R.id.recyclerviewListTerm));
+        RecyclerView recyclerView = findViewById((R.id.recyclerviewListTerm));
         recyclerView.setAdapter(termAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         termAdapter.setTerms(allTerms);

@@ -16,66 +16,76 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/course_number" />
+                    android:text="Course ID" />
+
                 <EditText
+                    android:id="@+id/courseID"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/c100"
-                    android:id="@+id/courseId" />
+                    android:hint="@string/c100" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="@string/course_name" />
+
                 <EditText
+                    android:id="@+id/courseName"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/introductory_algebra"
-                    android:id="@+id/courseName"/>
+                    android:hint="@string/introductory_algebra" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="Course Start Date" />
+
                 <EditText
+                    android:id="@+id/courseDateStart"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="07/21/21"
-                    android:id="@+id/courseDateStart" />
+                    android:hint="07/21/21" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/save"
-                    android:onClick="saveCourse"/>
+                android:orientation="horizontal">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/date"
-                    android:onClick="date"/>
+                    android:onClick="saveCourse"
+                    android:text="@string/save" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="date"
+                    android:text="@string/date" />
+
             </LinearLayout>
 
         </LinearLayout>

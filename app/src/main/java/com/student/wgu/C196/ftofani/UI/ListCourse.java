@@ -30,11 +30,11 @@ public class ListCourse extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        repository=new Repository(getApplication());
+        repository = new Repository(getApplication());
         List<Course> allCourses = repository.getAllCourses();
 
-        RecyclerView recyclerView=findViewById((R.id.recyclerviewListCourse));
-        final CourseAdapter courseAdapter=new CourseAdapter(this);
+        RecyclerView recyclerView = findViewById((R.id.recyclerviewListCourse));
+        final CourseAdapter courseAdapter = new CourseAdapter(this);
         recyclerView.setAdapter(courseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         courseAdapter.setCourses(allCourses);
@@ -53,7 +53,7 @@ public class ListCourse extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-
+/*
             case R.id.refresh:
                 repository=new Repository(getApplication());
                 List<Course> allCourses=repository.getAllCourses();
@@ -63,6 +63,7 @@ public class ListCourse extends AppCompatActivity {
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 courseAdapter.setCourses(allCourses);
                 return true;
+ */
         }
         return super.onOptionsItemSelected(Item);
     }

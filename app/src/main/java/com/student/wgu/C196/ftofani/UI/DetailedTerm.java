@@ -18,6 +18,7 @@ public class DetailedTerm extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
         switch (Item.getItemId()) {

@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content" -->
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/termTextView"
         style="@style/word_title"
-
-        android:layout_width="200dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textAlignment="center"
-        android:background="@android:color/holo_orange_light" />
+        android:background="@android:color/holo_orange_light"
+        android:textAlignment="center" />
+
     <TextView
         android:id="@+id/termTextView2"
         style="@style/word_title"
-
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textAlignment="center"
-        android:background="@android:color/holo_orange_light" />
+        android:background="@android:color/holo_orange_light"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/termTextView3"
+        style="@style/word_title"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light"
+        android:textAlignment="center" />
 </LinearLayout>

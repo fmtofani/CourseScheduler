@@ -1,6 +1,7 @@
 package com.student.wgu.C196.ftofani.Database;
 
 import android.app.Application;
+
 import com.student.wgu.C196.ftofani.DAO.AssessmentDAO;
 import com.student.wgu.C196.ftofani.DAO.CourseDAO;
 import com.student.wgu.C196.ftofani.DAO.MentorDAO;
@@ -11,6 +12,7 @@ import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 import com.student.wgu.C196.ftofani.Entities.Note;
 import com.student.wgu.C196.ftofani.Entities.Term;
+
 import java.util.List;
 
 public class Repository {
@@ -28,21 +30,21 @@ public class Repository {
 
     public Repository(Application application) {
         DatabaseBuilder db = DatabaseBuilder.getDatabase(application);
-        mTermDAO=db.termDAO();
-        mCourseDAO= db.courseDAO();
-        mAssessmentDAO=db.assessmentDAO();
-        mMentorDAO=db.mentorDAO();
-        mNoteDAO=db.noteDAO();
+        mTermDAO = db.termDAO();
+        mCourseDAO = db.courseDAO();
+        mAssessmentDAO = db.assessmentDAO();
+        mMentorDAO = db.mentorDAO();
+        mNoteDAO = db.noteDAO();
     }
 
 
     //Terms
-    public List<Term> getAllTerms(){
-        mAllTerms=mTermDAO.getAllTerms();
+    public List<Term> getAllTerms() {
+        mAllTerms = mTermDAO.getAllTerms();
         return mAllTerms;
     }
 
-    public void insert(Term term){
+    public void insert(Term term) {
         mTermDAO.insert(term);
     }
 
@@ -55,12 +57,12 @@ public class Repository {
     }
 
     //Courses
-    public List<Course> getAllCourses(){
-        mAllCourses=mCourseDAO.getAllCourses();
-            return mAllCourses;
+    public List<Course> getAllCourses() {
+        mAllCourses = mCourseDAO.getAllCourses();
+        return mAllCourses;
     }
 
-    public void insert(Course course){
+    public void insert(Course course) {
         mCourseDAO.insert(course);
     }
 
@@ -73,12 +75,12 @@ public class Repository {
     }
 
     //Assessments
-    public List<Assessment> getAllAssessments(){
-        mAllAssessments=mAssessmentDAO.getAllAssessments();
+    public List<Assessment> getAllAssessments() {
+        mAllAssessments = mAssessmentDAO.getAllAssessments();
         return mAllAssessments;
     }
 
-    public void insert(Assessment assessment){
+    public void insert(Assessment assessment) {
         mAssessmentDAO.insert(assessment);
     }
 
@@ -91,12 +93,12 @@ public class Repository {
     }
 
     //Mentors
-    public List<Mentor> getAllMentors(){
-        mAllMentors=mMentorDAO.getAllMentors();
+    public List<Mentor> getAllMentors() {
+        mAllMentors = mMentorDAO.getAllMentors();
         return mAllMentors;
     }
 
-    public void insert(Mentor mentor){
+    public void insert(Mentor mentor) {
         mMentorDAO.insert(mentor);
     }
 
@@ -109,12 +111,12 @@ public class Repository {
     }
 
     //Notes
-    public List<Note> getAllNotes(){
-        mAllNotes=mNoteDAO.getAllNotes();
+    public List<Note> getAllNotes() {
+        mAllNotes = mNoteDAO.getAllNotes();
         return mAllNotes;
     }
 
-    public void insert(Note note){
+    public void insert(Note note) {
         mNoteDAO.insert(note);
     }
 

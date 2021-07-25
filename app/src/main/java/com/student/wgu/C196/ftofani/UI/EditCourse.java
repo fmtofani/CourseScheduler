@@ -1,6 +1,7 @@
 package com.student.wgu.C196.ftofani.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.student.wgu.C196.ftofani.Database.Repository;
+import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.R;
 
 import java.text.ParseException;
@@ -19,11 +21,12 @@ import java.util.Date;
 import java.util.Locale;
 
 public class EditCourse extends AppCompatActivity {
- /*   String name;
-    EditText editName;
-    EditText courseDateStart;
+    Repository repository;
     int id;
-   // Repository repository;
+    String name;
+    EditText editID;
+    EditText editName;
+    Course currentCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,11 @@ public class EditCourse extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        name=getIntent().getStringExtra("name");
-  //      editName=findViewById(R.id.courseName);
-    //    courseDateStart=findViewById(R.id.courseDateStart);
-      //  repository=new Repository(getApplication());
-
+        name = getIntent().getStringExtra("name");
+        editID = findViewById(R.id.courseID);
+        editName = findViewById(R.id.courseName);
+        editName.setText(name);
+        repository = new Repository(getApplication());
 
     }
 
@@ -46,7 +49,8 @@ public class EditCourse extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.sharemenu, menu);
         return true;
     }
-        @Override
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem Item) {
         switch (Item.getItemId()) {
             case android.R.id.home:
@@ -64,7 +68,7 @@ public class EditCourse extends AppCompatActivity {
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
                 return true;
-
+/*
                 //Setup Notifications
             case R.id.notify:
                 String dateFromScreen=courseDateStart.getText().toString();
@@ -81,57 +85,40 @@ public class EditCourse extends AppCompatActivity {
                 intent.putExtra("key", "message I want to send");
                 PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
                 return true;
+*/
 //Lesson 4 1:36
-    //        case R.id.delete:
-      //          for(Thing p:repository.getAllThings()) {
-        //            if(p.getThingID()==getIntent().getIntExtra("id, -1"))currentThing=p;
-          //      }
+
+            //        case R.id.delete:
+            //          for(Thing p:repository.getAllThings()) {
+            //            if(p.getThingID()==getIntent().getIntExtra("id, -1"))currentThing=p;
+            //      }
             //    if(p.getCourse().size==0) {
-              //      repository.delete(currentThing);
-                //}
-  //              else {
-    //                Toast.makeText(ListCourse.this, "Can't delete course attached to term", Toast.LENGTH_LONG).show());
-      //          }
-        //        return true;
+            //      repository.delete(currentThing);
+            //}
+            //              else {
+            //                Toast.makeText(ListCourse.this, "Can't delete course attached to term", Toast.LENGTH_LONG).show());
+            //          }
+            //        return true;
 
         }
         return super.onOptionsItemSelected(Item);
     }
 
-
-    public void saveCourse(View view) {
-        String screenName = editName.getText().toString();
-        if (name == null) {
-            //Thing newThing = new Thing(++id, screenName);
-            //repository.insert(newThing);
-        } else {
-            //Thing oldThing = new Thing(getIntent().getIntExtra("thingID", -1), screenName);
-            //repository.update(oldThing);
+    /*
+        public void saveCourse(View view) {
+            String screenName = editName.getText().toString();
+            if (name == null) {
+                id=repository.getAllCourses().get(repository.getAllCourses().size()-1).getCourseID();
+                Course newCourse = new Course(++id, screenName);
+                repository.insert(newCourse);
+            } else {
+                Course oldCourse = new Course(++id, screenName);
+                repository.update(oldCourse);
+            }
         }
-    }
-
+    */
     public void date(View view) {
     }
-*/
 
-        @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_course);
-        //add back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem Item) {
-        switch (Item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(Item);
-    }
 
 }
