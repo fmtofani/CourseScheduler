@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.EditTerm">
+    tools:context=".UI.EditNote">
 
-    <LinearLayout
-        android:id="@+id/termLayout"
+   <LinearLayout
+        android:id="@+id/noteLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,19 +20,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewTermName"
+                android:id="@+id/textViewNoteName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/editTextTermName"
+                android:id="@+id/editTextNoteName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="1"/>
+                android:ems="10" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,53 +40,32 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewTermStartDate"
+                android:id="@+id/textViewNoteBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Start Date" />
+                android:text="Body" />
 
             <EditText
-                android:id="@+id/editTextTermStartDate"
+                android:id="@+id/editTextNoteBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="01-01-23"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textViewTermEndDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="End Date" />
-
-            <EditText
-                android:id="@+id/editTextTermEndDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="06-01-23"/>
+                android:ems="10" />
         </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addTerm"
+            android:onClick="addNote"
             android:text="@string/save" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="deleteTerm"
+            android:onClick="deleteNote"
             android:text="Delete" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

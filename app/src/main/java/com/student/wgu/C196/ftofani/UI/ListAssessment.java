@@ -31,9 +31,9 @@ public class ListAssessment extends AppCompatActivity {
 
         repository = new Repository(getApplication());
         List<Assessment> allAssessments = repository.getAllAssessments();
+        final AssessmentAdapter adapter = new AssessmentAdapter(this);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerviewListAssessment);
-        final AssessmentAdapter adapter = new AssessmentAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setAssessments(allAssessments);

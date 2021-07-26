@@ -21,6 +21,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class EditCourse extends AppCompatActivity {
+
+//
+//
+// Add Note Button
+// Add Mentor Button
+//
+//
+//
     Repository repository;
     int id;
     String name;
@@ -86,20 +94,6 @@ public class EditCourse extends AppCompatActivity {
                 PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
                 return true;
 */
-//Lesson 4 1:36
-
-            //        case R.id.delete:
-            //          for(Thing p:repository.getAllThings()) {
-            //            if(p.getThingID()==getIntent().getIntExtra("id, -1"))currentThing=p;
-            //      }
-            //    if(p.getCourse().size==0) {
-            //      repository.delete(currentThing);
-            //}
-            //              else {
-            //                Toast.makeText(ListCourse.this, "Can't delete course attached to term", Toast.LENGTH_LONG).show());
-            //          }
-            //        return true;
-
         }
         return super.onOptionsItemSelected(Item);
     }
