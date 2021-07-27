@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -43,12 +44,10 @@ public class EditNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
-        //add back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Id = getIntent().getIntExtra("noteID", -1);
-
         repository = new Repository(getApplication());
         allNotes = repository.getAllNotes();
         for (Note p : allNotes) {
@@ -56,6 +55,7 @@ public class EditNote extends AppCompatActivity {
                 currentNote = p;
             }
         }
+
         editName = findViewById(R.id.editTextNoteName);
         editBody = findViewById(R.id.editTextNoteBody);
         if (currentNote != null) {
@@ -71,12 +71,34 @@ public class EditNote extends AppCompatActivity {
 
     }
 
+    // This method sets up the hamburger menu in the title area
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.share, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
+
+            //Setup an intent to share the note
+            case R.id.share:
+                name = editName.getText().toString();
+                body = editBody.getText().toString();
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TITLE, name);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, body);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
 
@@ -97,6 +119,7 @@ public class EditNote extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Delete note button method
     public void deleteNote(View view) {
         if (Id == -1) {
             Intent intent = new Intent(EditNote.this, EditCourse.class);
@@ -108,6 +131,5 @@ public class EditNote extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 
 }

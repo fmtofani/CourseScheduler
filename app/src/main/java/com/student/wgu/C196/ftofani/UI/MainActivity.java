@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         repository.insert(term);
         term = new Term(2, "2", "02-01-21", "02-02-21");
         repository.insert(term);
-        Course course = new Course(1, "English", "in-progress", "01-01-21", "01-02-21", 1);
+        Course course = new Course(1, "English", "in-progress", "01/01/21", "01/02/21", 1);
         repository.insert(course);
-        course = new Course(2, "Biology", "in-progress", "01-01-21", "01-02-21", 1);
+        course = new Course(2, "Biology", "in-progress", "01/01/21", "01/02/21", 1);
         repository.insert(course);
-        Assessment assessment = new Assessment(1, "Algebra", "Exam", "01-03-21", 1);
+        Assessment assessment = new Assessment(1, "Algebra", "Exam", "01/03/21", 1);
         repository.insert(assessment);
-        assessment = new Assessment(2, "Biology", "Project", "03-02-21", 1);
+        assessment = new Assessment(2, "Biology", "Project", "03/02/21", 1);
         repository.insert(assessment);
         Mentor mentor = new Mentor(1, "John Smith", "123-123-1232", "john.smith@wgu.edu", 1);
         repository.insert(mentor);
@@ -66,6 +66,34 @@ public class MainActivity extends AppCompatActivity {
 }
 
 /*
+    // Create hamburger menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sharemenu, menu);
+        return true;
+*/
+
+
+/*
+            // Setup Notifications
+            case R.id.notify:
+                String dateFromScreen=courseDateStart.getText().toString();
+                String myFormat ="MM/dd/yy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                Date myDate=null;
+                try {
+                    myDate=sdf.parse(dateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Long trigger= myDate.getTime();
+                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                intent.putExtra("key", "message I want to send");
+                PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
+                return true;
+*/
+
+
+/*
 
     ---------   TIPS    ----------
 
@@ -92,9 +120,6 @@ Change name in manifest for title bar
 //Lesson 4 1:36 delete with something in the repository
 //
 //
-//    EditCourse has menu actions for notify and share commented out
-//    ListCourse has refresh method for menu
-//
 //    At least 5 assessments for each course
 //
 //    Make sure the EditTerm Shows the Terms Name, StartDate and EndDate
@@ -112,7 +137,7 @@ Change name in manifest for title bar
 /*
     Term Names: Term 1, Term 2, Spring
 
-    Course Status: in-progress, completed, dropped, plan to take
+    Course Status: in progress, completed, dropped, plan to take
 
     Assessments: Performance or Objective
 
@@ -146,6 +171,91 @@ F.  Reflect on the creation of your mobile application by doing the following:
 6.  Describe how emulators are used and the pros and cons of using an emulator versus using a development device.
 
 
+
+
+ */
+
+/*
+
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                  METHODS LEFT OUT FOR NOW
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//   private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+//
+//        @Override
+//        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+//            super.onOpen(db);
+//
+//                PartDAO mPartDao = INSTANCE.partDAO();
+//                ProductDAO mProductDao = INSTANCE.productDAO();
+//
+//                // Start the app with a clean database every time.
+//                // Not needed if you only populate on creation.
+//                //  mProductDao.deleteAllProducts();
+//                //  mPartDao.deleteAllParts();
+//
+//                PartEntity part = new PartEntity(1, "wheel", 3.0, 1);
+//                mPartDao.insert(part);
+//                part = new PartEntity(2, "brake", 4.0, 2);
+//                mPartDao.insert(part);
+//                part = new PartEntity(3, "chain", 4.0, 1);
+//                mPartDao.insert(part);
+//
+//                ProductEntity product = new ProductEntity(1, "bike", 6.0);
+//                mProductDao.insert(product);
+//                product = new ProductEntity(2, "trike", 8.0);
+//                mProductDao.insert(product);
+//        }
+
+
+
+
+            case R.id.refresh:
+                repository=new Repository(getApplication());
+                List<Course> allCourses=repository.getAllCourses();
+                final CourseAdapter courseAdapter=new CourseAdapter(this);
+                RecyclerView recyclerView=findViewById(R.id.recyclerviewListCourse);
+                recyclerView.setAdapter(courseAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                courseAdapter.setCourses(allCourses);
+                return true;
+
+
+
+
+
+           case R.id.notifyCourseStart:
+                String messageEnd = "The WGU course, " + editName.getText().toString() + " ,is set to end today.";
+                String endDateFromScreen = editEndDate.getText().toString();
+                String myFormat ="MM/dd/yy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                Date myDate=null;
+                try {
+                    myDate=sdf.parse(endDateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Long trigger= myDate.getTime();
+                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                intent.putExtra("key", messageStart);
+                PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
+                AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                return true;
+
+
+
+        public void saveCourse(View view) {
+            String screenName = editName.getText().toString();
+            if (name == null) {
+                id=repository.getAllCourses().get(repository.getAllCourses().size()-1).getCourseID();
+                Course newCourse = new Course(++id, screenName);
+                repository.insert(newCourse);
+            } else {
+                Course oldCourse = new Course(++id, screenName);
+                repository.update(oldCourse);
 
 
  */

@@ -4,6 +4,7 @@ package com.student.wgu.C196.ftofani.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Required Entitys for Room
 @Entity(tableName = "course_table")
 public class Course {
 
@@ -26,62 +27,50 @@ public class Course {
 
 
     public int getCourseID() {
-
         return courseID;
     }
 
     public void setCourseID(int courseID) {
-
         this.courseID = courseID;
     }
 
     public String getCourseName() {
-
         return courseName;
     }
 
     public void setCourseName(String courseName) {
-
         this.courseName = courseName;
     }
 
     public String getCourseProgress() {
-
         return courseProgress;
     }
 
     public void setCourseProgress(String courseProgress) {
-
         this.courseName = courseName;
     }
 
     public String getCourseStartDate() {
-
         return courseStartDate;
     }
 
     public void setCourseStartDate(String courseStartDate) {
-
         this.courseStartDate = courseStartDate;
     }
 
     public String getCourseEndDate() {
-
         return courseEndDate;
     }
 
     public void setCourseEndDate(String courseEndDate) {
-
         this.courseEndDate = courseEndDate;
     }
 
     public int getCourseTermID() {
-
         return courseTermID;
     }
 
     public void setCourseTermID(int courseTermID) {
-
         this.courseTermID = courseTermID;
     }
 

@@ -7,11 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import com.student.wgu.C196.ftofani.R;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 
@@ -21,7 +18,6 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
         private final TextView mentorItemView;
         private final TextView mentorItemView2;
         private final TextView mentorItemView3;
-
 
         private MentorViewHolder(View itemView) {
             super(itemView);
@@ -43,7 +39,6 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
                 }
             });
         }
-
     }
 
     private final LayoutInflater mInflater;
@@ -58,7 +53,6 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
     @Override
     public MentorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.mentor_list_item, parent, false);
-
         return new MentorViewHolder(itemView);
     }
 
@@ -75,20 +69,18 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
             holder.mentorItemView2.setText("No Word");
             holder.mentorItemView3.setText("No Word");
         }
-
     }
 
-    public void setParts(List<Mentor> words) {
+    public void setMentors(List<Mentor> words) {
         mMentors = words;
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
         if (mMentors != null)
             return mMentors.size();
         else return 0;
     }
+
 }

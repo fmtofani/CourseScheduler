@@ -43,7 +43,7 @@ public class ListCourse extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_recyclerview, menu);
+        getMenuInflater().inflate(R.menu.menu_refresh, menu);
         return true;
     }
 
@@ -53,17 +53,7 @@ public class ListCourse extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-/*
-            case R.id.refresh:
-                repository=new Repository(getApplication());
-                List<Course> allCourses=repository.getAllCourses();
-                final CourseAdapter courseAdapter=new CourseAdapter(this);
-                RecyclerView recyclerView=findViewById(R.id.recyclerviewListCourse);
-                recyclerView.setAdapter(courseAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                courseAdapter.setCourses(allCourses);
-                return true;
- */
+
         }
         return super.onOptionsItemSelected(Item);
     }

@@ -6,11 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import com.student.wgu.C196.ftofani.R;
 import com.student.wgu.C196.ftofani.Entities.Term;
 
@@ -20,7 +17,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
         private final TextView termItemView;
         private final TextView termItemView2;
         private final TextView termItemView3;
-
 
         private TermViewHolder(View itemView) {
             super(itemView);
@@ -41,7 +37,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                 }
             });
         }
-
     }
 
     private final LayoutInflater mInflater;
@@ -56,7 +51,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
     @Override
     public TermViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.term_list_item, parent, false);
-
         return new TermViewHolder(itemView);
     }
 
@@ -68,12 +62,10 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
             holder.termItemView2.setText(current.getTermStartDate());
             holder.termItemView3.setText(current.getTermEndDate());
         } else {
-            // Covers the case of data not being ready yet.
             holder.termItemView.setText("No Word");
             holder.termItemView2.setText("No Word");
             holder.termItemView3.setText("No Word");
         }
-
     }
 
     public void setTerms(List<Term> words) {
@@ -81,12 +73,11 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
         if (mTerms != null)
             return mTerms.size();
         else return 0;
     }
+
 }

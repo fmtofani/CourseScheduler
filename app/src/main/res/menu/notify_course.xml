@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+      android:id="@+id/notifyCourseStart"
+      android:orderInCategory="100"
+      android:title="Start Notify"
+      app:showAsAction="never" />
+
+    <item
+      android:id="@+id/notifyCourseEnd"
+      android:orderInCategory="100"
+      android:title="End Notify"
+      app:showAsAction="never" />
+
+</menu>

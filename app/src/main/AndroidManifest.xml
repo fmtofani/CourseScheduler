@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
-        <activity android:name=".UI.EditNote"></activity>
 
         <receiver
             android:name=".UI.MyReceiver"
@@ -17,38 +16,49 @@
             android:exported="true" />
 
         <activity
-            android:name=".UI.ListMentor"
-            android:label="Instructor List" />
-        <activity
-            android:name=".UI.EditMentor"
-            android:label="Edit Instructor" />
-        <activity
-            android:name=".UI.EditAssessment"
-            android:label="Edit Assessment" />
-        <activity
-            android:name=".UI.EditCourse"
-            android:label="Edit Course" />
+            android:name=".UI.ListTerm"
+            android:label="@string/my_terms_list" />
         <activity
             android:name=".UI.EditTerm"
             android:label="Edit Term" />
         <activity
-            android:name=".UI.DetailedAssessment"
-            android:label="Detailed Assessment" />
-        <activity
             android:name=".UI.DetailedTerm"
             android:label="Detailed Term" />
-        <activity
-            android:name=".UI.DetailedCourse"
-            android:label="Detailed Course" />
-        <activity
-            android:name=".UI.ListAssessment"
-            android:label="Assessment List" />
+
         <activity
             android:name=".UI.ListCourse"
             android:label="Course List" />
         <activity
-            android:name=".UI.ListTerm"
-            android:label="@string/my_terms_list" />
+            android:name=".UI.EditCourse"
+            android:label="Edit Course" />
+        <activity
+            android:name=".UI.DetailedCourse"
+            android:label="Detailed Course" />
+
+        <activity
+            android:name=".UI.ListAssessment"
+            android:label="Assessment List" />
+        <activity
+            android:name=".UI.EditAssessment"
+            android:label="Edit Assessment" />
+        <activity
+            android:name=".UI.DetailedAssessment"
+            android:label="Detailed Assessment" />
+
+        <activity
+            android:name=".UI.ListMentor"
+            android:label="Mentor List" />
+        <activity
+            android:name=".UI.EditMentor"
+            android:label="Edit Mentor" />
+
+        <activity
+            android:name=".UI.ListNote"
+            android:label="Note List" />
+        <activity
+            android:name=".UI.EditNote"
+            android:label="Edit Note" />
+
         <activity
             android:name=".UI.MainActivity"
             android:label="Course Scheduler">
@@ -58,6 +68,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

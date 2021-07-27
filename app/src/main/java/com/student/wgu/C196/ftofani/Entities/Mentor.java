@@ -4,6 +4,7 @@ package com.student.wgu.C196.ftofani.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Required Entitys for Room
 @Entity(tableName = "mentor_table")
 public class Mentor {
 
@@ -22,52 +23,41 @@ public class Mentor {
         this.mentorCourseID = mentorCourseID;
     }
 
-
     public int getMentorID() {
-
         return mentorID;
     }
 
     public void setMentorID(int mentorID) {
-
         this.mentorID = mentorID;
     }
 
     public String getMentorName() {
-
         return mentorName;
     }
 
     public void setMentorPhone(String mentorPhone) {
-
         this.mentorPhone = mentorPhone;
     }
 
     public String getMentorPhone() {
-
         return mentorPhone;
     }
 
     public void setMentorEmail(String mentorEmail) {
-
         this.mentorEmail = mentorEmail;
     }
 
     public String getMentorEmail() {
-
         return mentorEmail;
     }
 
     public void setMentorCourseID(int mentorCourseID) {
-
         this.mentorCourseID = mentorCourseID;
     }
 
     public int getMentorCourseID() {
-
         return mentorCourseID;
     }
-
 
     @Override
     public String toString() {

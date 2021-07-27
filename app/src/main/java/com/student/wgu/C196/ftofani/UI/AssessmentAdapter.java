@@ -7,21 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import com.student.wgu.C196.ftofani.R;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 
+// Required Adapter for Room
 public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.AssessmentViewHolder> {
 
     class AssessmentViewHolder extends RecyclerView.ViewHolder {
         private final TextView assessmentItemView;
         private final TextView assessmentItemView2;
         private final TextView assessmentItemView3;
-
 
         private AssessmentViewHolder(View itemView) {
             super(itemView);
@@ -58,7 +55,6 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
     @Override
     public AssessmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.assessment_list_item, parent, false);
-
         return new AssessmentViewHolder(itemView);
     }
 
@@ -70,12 +66,10 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
             holder.assessmentItemView2.setText(current.getAssessmentDate());
             holder.assessmentItemView3.setText(current.getAssessmentType());
         } else {
-            // Covers the case of data not being ready yet.
             holder.assessmentItemView.setText("No Word");
             holder.assessmentItemView2.setText("No Word");
             holder.assessmentItemView3.setText("No Word");
         }
-
     }
 
     public void setAssessments(List<Assessment> words) {
@@ -83,13 +77,11 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
         notifyDataSetChanged();
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
         if (mAssessment != null)
             return mAssessment.size();
         else return 0;
     }
-}
 
+}

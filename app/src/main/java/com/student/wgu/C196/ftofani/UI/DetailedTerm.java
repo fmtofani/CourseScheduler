@@ -1,10 +1,8 @@
 package com.student.wgu.C196.ftofani.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.student.wgu.C196.ftofani.R;
 
 public class DetailedTerm extends AppCompatActivity {

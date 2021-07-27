@@ -6,11 +6,10 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-
 import com.student.wgu.C196.ftofani.Entities.Assessment;
-
 import java.util.List;
 
+// Required DAO for Room
 @Dao
 public interface AssessmentDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

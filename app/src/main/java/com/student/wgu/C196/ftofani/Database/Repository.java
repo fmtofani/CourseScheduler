@@ -12,9 +12,9 @@ import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 import com.student.wgu.C196.ftofani.Entities.Note;
 import com.student.wgu.C196.ftofani.Entities.Term;
-
 import java.util.List;
 
+// Required Repository for Room
 public class Repository {
     private TermDAO mTermDAO;
     private List<Term> mAllTerms;
@@ -43,15 +43,12 @@ public class Repository {
         mAllTerms = mTermDAO.getAllTerms();
         return mAllTerms;
     }
-
     public void insert(Term term) {
         mTermDAO.insert(term);
     }
-
     public void delete(Term term) {
         mTermDAO.delete(term);
     }
-
     public void update(Term term) {
         mTermDAO.update(term);
     }
@@ -61,15 +58,12 @@ public class Repository {
         mAllCourses = mCourseDAO.getAllCourses();
         return mAllCourses;
     }
-
     public void insert(Course course) {
         mCourseDAO.insert(course);
     }
-
     public void delete(Course course) {
         mCourseDAO.delete(course);
     }
-
     public void update(Course course) {
         mCourseDAO.update(course);
     }
@@ -79,15 +73,12 @@ public class Repository {
         mAllAssessments = mAssessmentDAO.getAllAssessments();
         return mAllAssessments;
     }
-
     public void insert(Assessment assessment) {
         mAssessmentDAO.insert(assessment);
     }
-
     public void delete(Assessment assessment) {
         mAssessmentDAO.delete(assessment);
     }
-
     public void update(Assessment assessment) {
         mAssessmentDAO.update(assessment);
     }
@@ -97,15 +88,12 @@ public class Repository {
         mAllMentors = mMentorDAO.getAllMentors();
         return mAllMentors;
     }
-
     public void insert(Mentor mentor) {
         mMentorDAO.insert(mentor);
     }
-
     public void delete(Mentor mentor) {
         mMentorDAO.delete(mentor);
     }
-
     public void update(Mentor mentor) {
         mMentorDAO.update(mentor);
     }
@@ -115,15 +103,12 @@ public class Repository {
         mAllNotes = mNoteDAO.getAllNotes();
         return mAllNotes;
     }
-
     public void insert(Note note) {
         mNoteDAO.insert(note);
     }
-
     public void delete(Note note) {
         mNoteDAO.delete(note);
     }
-
     public void update(Note note) {
         mNoteDAO.update(note);
     }
