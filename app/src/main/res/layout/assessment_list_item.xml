@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/assessmentTextView"
+        android:id="@+id/assessmentNameTV"
         style="@style/word_title"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -13,7 +13,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/assessmentTextView2"
+        android:id="@+id/assessmentDateTV"
         style="@style/word_title"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -22,11 +22,21 @@
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/assessmentTextView3"
+        android:id="@+id/assessmentTypeTV"
         style="@style/word_title"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@android:color/holo_orange_light"
         android:textAlignment="center" />
+
+   <TextView
+        android:id="@+id/assessmentCourseIDTV"
+        style="@style/word_title"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light"
+        android:textAlignment="center" />
+
 </LinearLayout>

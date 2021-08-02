@@ -19,12 +19,15 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
         private final TextView assessmentItemView;
         private final TextView assessmentItemView2;
         private final TextView assessmentItemView3;
+        private final TextView assessmentItemView4;
 
         private AssessmentViewHolder(View itemView) {
             super(itemView);
-            assessmentItemView = itemView.findViewById(R.id.assessmentTextView);
-            assessmentItemView2 = itemView.findViewById(R.id.assessmentTextView2);
-            assessmentItemView3 = itemView.findViewById(R.id.assessmentTextView3);
+            assessmentItemView = itemView.findViewById(R.id.assessmentNameTV);
+            assessmentItemView2 = itemView.findViewById(R.id.assessmentDateTV);
+            assessmentItemView3 = itemView.findViewById(R.id.assessmentTypeTV);
+            assessmentItemView4 = itemView.findViewById(R.id.assessmentCourseIDTV);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,10 +67,12 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
             holder.assessmentItemView.setText(current.getAssessmentName());
             holder.assessmentItemView2.setText(current.getAssessmentDate());
             holder.assessmentItemView3.setText(current.getAssessmentType());
+            holder.assessmentItemView4.setText(Integer.toString(current.getAssessmentCourseID()));
         } else {
             holder.assessmentItemView.setText("No Word");
             holder.assessmentItemView2.setText("No Word");
             holder.assessmentItemView3.setText("No Word");
+            holder.assessmentItemView4.setText("No Word");
         }
     }
 

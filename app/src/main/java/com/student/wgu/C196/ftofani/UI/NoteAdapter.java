@@ -17,11 +17,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     class NoteViewHolder extends RecyclerView.ViewHolder {
         private final TextView noteItemView;
         private final TextView noteItemView2;
+        private final TextView noteItemView3;
 
         private NoteViewHolder(View itemView) {
             super(itemView);
             noteItemView = itemView.findViewById(R.id.noteTextView);
             noteItemView2 = itemView.findViewById(R.id.noteTextView2);
+            noteItemView3 = itemView.findViewById(R.id.noteTextView3);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -59,9 +61,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             Note current = mNotes.get(position);
             holder.noteItemView.setText(current.getNoteName());
             holder.noteItemView2.setText(current.getNoteBody());
+            holder.noteItemView3.setText(Integer.toString(current.getNoteCourseID()));
         } else {
             holder.noteItemView.setText("No Word");
             holder.noteItemView2.setText("No Word");
+            holder.noteItemView3.setText("No Word");
         }
     }
 

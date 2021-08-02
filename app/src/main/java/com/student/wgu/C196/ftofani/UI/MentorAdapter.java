@@ -18,12 +18,14 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
         private final TextView mentorItemView;
         private final TextView mentorItemView2;
         private final TextView mentorItemView3;
+        private final TextView mentorItemView4;
 
         private MentorViewHolder(View itemView) {
             super(itemView);
             mentorItemView = itemView.findViewById(R.id.mentorTextView);
             mentorItemView2 = itemView.findViewById(R.id.mentorTextView2);
             mentorItemView3 = itemView.findViewById(R.id.mentorTextView3);
+            mentorItemView4 = itemView.findViewById(R.id.mentorTextView4);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -63,11 +65,13 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.MentorView
             holder.mentorItemView.setText(current.getMentorName());
             holder.mentorItemView2.setText(current.getMentorPhone());
             holder.mentorItemView3.setText(current.getMentorEmail());
+            holder.mentorItemView4.setText(Integer.toString(current.getMentorCourseID()));
         } else {
             // Covers the case of data not being ready yet.
             holder.mentorItemView.setText("No Word");
             holder.mentorItemView2.setText("No Word");
             holder.mentorItemView3.setText("No Word");
+            holder.mentorItemView4.setText("No Word");
         }
     }
 

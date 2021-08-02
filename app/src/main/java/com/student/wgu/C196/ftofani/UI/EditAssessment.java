@@ -34,10 +34,12 @@ public class EditAssessment extends AppCompatActivity {
 
     Repository repository;
     int Id;
+    int numCourseID;
     EditText editName;
     EditText editDate;
     Assessment currentAssessment;
     public static int numAssessments;
+    Course currentCourse;
 
     //For Spinners
     private Spinner typeSpinner;
@@ -63,6 +65,15 @@ public class EditAssessment extends AppCompatActivity {
                 currentAssessment = p;
             }
         }
+
+        numCourseID = getIntent().getIntExtra("assessmentCourseID", -1);
+        repository = new Repository(getApplication());
+        for (Course c : repository.getAllCourses()) {
+            if (c.getCourseID() == numCourseID) {
+                currentCourse = c;
+            }
+        }
+
         editName = findViewById(R.id.editTextAssessmentName);
 
         // Setup Spinner for Types of Assessments
@@ -121,38 +132,23 @@ public class EditAssessment extends AppCompatActivity {
         if (currentAssessment != null) {
             editName.setText(currentAssessment.getAssessmentName());
             editDate.setText(currentAssessment.getAssessmentDate());
-            // Setup spinner TYPE
+            // Index the Type Spinner to the correct type if Editing an Assessment
             int numType = 0;
             if (currentAssessment.getAssessmentType().equals("Performance")) numType = 0;
             if (currentAssessment.getAssessmentType().equals("Objective")) numType = 1;
             typeSpinner.setSelection(numType);
 
-/*
-    This is where we left off
-    We need to iterate to find the right course ID
-    It maybe the best idea to make to type COURSE to more easily find the course ID
+            // Index the Course Spinner to the correct ID if Editing an Assessment
+            courseSpinner.setSelection(numCourseID-1);
 
-
-
-            // Setup spinner Course
-            int numCourse = 0;
-            for (int i = 0; i < courseList.size(); i++){
-               if (courseList.get(i).equals(currentAssessment.getAssessmentCourseID())) {
-                    numCourse = i;
-               }
+            // Keep track of how many Assessments
+            List<Assessment> filteredAssessments = new ArrayList<>();
+            repository = new Repository(getApplication());
+            for (Assessment p : repository.getAllAssessments()) {
+                if (p.getAssessmentID() == Id) filteredAssessments.add(p);
             }
-            courseSpinner.setSelection(numCourse);
-*/
+            numAssessments = filteredAssessments.size();
         }
-
-
-        List<Assessment> filteredAssessments = new ArrayList<>();
-        repository = new Repository(getApplication());
-        for (Assessment p : repository.getAllAssessments()) {
-            if (p.getAssessmentID() == Id) filteredAssessments.add(p);
-        }
-        numAssessments = filteredAssessments.size();
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -218,7 +214,7 @@ public class EditAssessment extends AppCompatActivity {
         int courseID = -1;
         repository = new Repository(getApplication());
         for (Course p : repository.getAllCourses()) {
-            if (p.getCourseName() == courseName) {
+            if (p.getCourseName().equals(courseName)) {
                 courseID = p.getCourseID();
             }
         }
@@ -236,7 +232,6 @@ public class EditAssessment extends AppCompatActivity {
     }
 
     int num = 0;
-
     public int setAssessmentID() {
         num = 0;
         for (Assessment p : repository.getAllAssessments()) {
