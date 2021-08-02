@@ -3,23 +3,18 @@ package com.student.wgu.C196.ftofani.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListAssessment extends AppCompatActivity {
 
     private Repository repository;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +32,6 @@ public class ListAssessment extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setAssessments(allAssessments);
-
     }
 
     @Override

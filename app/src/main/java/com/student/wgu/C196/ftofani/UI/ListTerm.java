@@ -3,16 +3,13 @@ package com.student.wgu.C196.ftofani.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Term;
 import com.student.wgu.C196.ftofani.R;
-
 import java.util.List;
 
 public class ListTerm extends AppCompatActivity {
@@ -35,7 +32,6 @@ public class ListTerm extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setTerms(allTerms);
-
     }
 
     @Override
@@ -52,4 +48,5 @@ public class ListTerm extends AppCompatActivity {
         Intent intent = new Intent(ListTerm.this, EditTerm.class);
         startActivity(intent);
     }
+
 }

@@ -3,16 +3,13 @@ package com.student.wgu.C196.ftofani.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Mentor;
 import com.student.wgu.C196.ftofani.R;
-
 import java.util.List;
 
 public class ListMentor extends AppCompatActivity {
@@ -33,7 +30,6 @@ public class ListMentor extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setMentors(allMentors);
-
     }
 
     @Override
@@ -50,4 +46,5 @@ public class ListMentor extends AppCompatActivity {
         Intent intent = new Intent(ListMentor.this, EditMentor.class);
         startActivity(intent);
     }
+
 }

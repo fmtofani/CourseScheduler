@@ -3,17 +3,14 @@ package com.student.wgu.C196.ftofani.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Assessment;
 import com.student.wgu.C196.ftofani.Entities.Note;
 import com.student.wgu.C196.ftofani.R;
-
 import java.util.List;
 
 public class ListNote extends AppCompatActivity {
@@ -37,7 +34,6 @@ public class ListNote extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setNotes(allNotes);
-
     }
 
     @Override
@@ -54,4 +50,5 @@ public class ListNote extends AppCompatActivity {
         Intent intent = new Intent(ListNote.this, EditNote.class);
         startActivity(intent);
     }
+
 }

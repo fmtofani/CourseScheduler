@@ -3,17 +3,14 @@ package com.student.wgu.C196.ftofani.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.student.wgu.C196.ftofani.Database.Repository;
 import com.student.wgu.C196.ftofani.Entities.Course;
 import com.student.wgu.C196.ftofani.R;
-
 import java.util.List;
 
 public class ListCourse extends AppCompatActivity {
@@ -29,7 +26,6 @@ public class ListCourse extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
         repository = new Repository(getApplication());
         List<Course> allCourses = repository.getAllCourses();
 
@@ -38,11 +34,9 @@ public class ListCourse extends AppCompatActivity {
         recyclerView.setAdapter(courseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         courseAdapter.setCourses(allCourses);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_refresh, menu);
         return true;
     }
@@ -53,7 +47,6 @@ public class ListCourse extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-
         }
         return super.onOptionsItemSelected(Item);
     }
@@ -62,4 +55,5 @@ public class ListCourse extends AppCompatActivity {
         Intent intent = new Intent(ListCourse.this, EditCourse.class);
         startActivity(intent);
     }
+
 }

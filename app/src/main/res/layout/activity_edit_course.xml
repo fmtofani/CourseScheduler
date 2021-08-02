@@ -55,6 +55,13 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="in progress" />
+
+                <Spinner
+                    android:id="@+id/spinnerProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:spinnerMode="dialog" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,7 +79,9 @@
                     android:id="@+id/editTextCourseStartDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="07/21/21" />
+                    android:hint="Start"
+                    android:focusable="false" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -90,7 +99,9 @@
                     android:id="@+id/editTextCourseEndDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="09/21/21" />
+                    android:hint="End"
+                    android:focusable="false" />
+
             </LinearLayout>
 
 
@@ -110,6 +121,14 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="Term 1" />
+
+                <Spinner
+                    android:id="@+id/spinnerTermID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:spinnerMode="dialog" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -126,15 +145,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="date"
-                    android:text="@string/date" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:onClick="goToNote"
                     android:text="@string/notes" />
-
 
                 <Button
                     android:layout_width="wrap_content"

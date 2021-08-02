@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         repository.insert(course);
         course = new Course(2, "Biology", "in-progress", "01/01/21", "01/02/21", 1);
         repository.insert(course);
-        Assessment assessment = new Assessment(1, "Algebra", "Exam", "01/03/21", 1);
+        Assessment assessment = new Assessment(1, "English", "Objective", "01/03/21", 1);
         repository.insert(assessment);
-        assessment = new Assessment(2, "Biology", "Project", "03/02/21", 1);
+        assessment = new Assessment(2, "Biology", "Performance", "03/02/21", 2);
         repository.insert(assessment);
         Mentor mentor = new Mentor(1, "John Smith", "123-123-1232", "john.smith@wgu.edu", 1);
         repository.insert(mentor);
@@ -226,9 +226,125 @@ F.  Reflect on the creation of your mobile application by doing the following:
 
 
 
-           case R.id.notifyCourseStart:
-                String messageEnd = "The WGU course, " + editName.getText().toString() + " ,is set to end today.";
-                String endDateFromScreen = editEndDate.getText().toString();
+        public void saveCourse(View view) {
+            String screenName = editName.getText().toString();
+            if (name == null) {
+                id=repository.getAllCourses().get(repository.getAllCourses().size()-1).getCourseID();
+                Course newCourse = new Course(++id, screenName);
+                repository.insert(newCourse);
+            } else {
+                Course oldCourse = new Course(++id, screenName);
+                repository.update(oldCourse);
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    this.finish();
+                    return true;
+
+                case R.id.notifyCourseStart:
+                    String messageStart = "The WGU course, " + editName.getText().toString() + " ,is set to end today.";
+                    String startDateFromScreen = editStartDate.getText().toString();
+                    String myFormat = "MM/dd/yy";
+                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                    Date myDate = null;
+                    try {
+                        myDate = sdf.parse(startDateFromScreen);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Long trigger = myDate.getTime();
+                    Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                    intent.putExtra("key", messageStart);
+                    PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                    return true;
+
+                case R.id.notifyCourseEnd:
+                    String messageEnd = "The WGU course," + editName.getText().toString() + ",is set to end today.";
+                    String endDateFromScreen = editEndDate.getText().toString();
+                    String myFormat = "MM/dd/yy";
+                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                    Date myDate = null;
+                    try {
+                        myDate = sdf.parse(endDateFromScreen);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Long trigger = myDate.getTime();
+                    Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                    intent.putExtra("key", messageEnd);
+                    PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                    return true;
+
+            }
+            return super.onOptionsItemSelected(item);
+
+        }
+
+
+
+
+
+
+   @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item).getItemId() {
+            this.finish();
+            return true;
+        }
+        else if(R.id.notifyCourseStart) {
+            String messageStart = "The WGU course, " + editName.getText().toString() + " ,is set to end today.";
+            String startDateFromScreen = editStartDate.getText().toString();
+            String myFormat ="MM/dd/yy";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            Date myDate=null;
+            try {
+                myDate=sdf.parse(startDateFromScreen);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Long trigger= myDate.getTime();
+            Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+            intent.putExtra("key", messageStart);
+            PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
+            AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            return true;
+
+
+
+            case R.id.notifyCourseStart:
+                String messageStart = "The WGU course, " + editName.getText().toString() + " ,is set to end today.";
+                String startDateFromScreen = editStartDate.getText().toString();
+                String myFormat ="MM/dd/yy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                Date myDate=null;
+                try {
+                    myDate=sdf.parse(startDateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Long trigger= myDate.getTime();
+                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                intent.putExtra("key", messageStart);
+                PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
+                AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                return true;
+
+            case R.id.notifyCourseEnd:
+                String messageEnd = "The WGU course, " + editName.getText().toString() + ",is set to end today.";
+                String endDateFromScreen = editStartDate.getText().toString();
                 String myFormat ="MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 Date myDate=null;
@@ -245,17 +361,11 @@ F.  Reflect on the creation of your mobile application by doing the following:
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
 
+        }
+        return super.onOptionsItemSelected(item);
 
+    }
 
-        public void saveCourse(View view) {
-            String screenName = editName.getText().toString();
-            if (name == null) {
-                id=repository.getAllCourses().get(repository.getAllCourses().size()-1).getCourseID();
-                Course newCourse = new Course(++id, screenName);
-                repository.insert(newCourse);
-            } else {
-                Course oldCourse = new Course(++id, screenName);
-                repository.update(oldCourse);
 
 
  */

@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Microbiology"/>
+                android:hint="Microbiology" />
         </LinearLayout>
 
         <LinearLayout
@@ -47,13 +47,24 @@
                 android:layout_weight="1"
                 android:text="Type" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinnerAssessmentType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <EditText
                 android:id="@+id/editTextAssessmentType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Objective"/>
+                android:hint="Objective" />
+-->
         </LinearLayout>
 
         <LinearLayout
@@ -74,7 +85,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="01/01/23"/>
+                android:focusable="false"
+                android:hint="Date" />
+
+            <!--
+                    android:id="@+id/startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:hint="start"
+                    android:focusable="false"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="41dp" />
+            -->
+
         </LinearLayout>
 
         <LinearLayout
@@ -89,13 +115,25 @@
                 android:layout_weight="1"
                 android:text="Course" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinnerAssessmentCourseID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <EditText
                 android:id="@+id/editTextAssessmentCourseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="1"/>
+                android:hint="1" />
+-->
+
         </LinearLayout>
 
         <Button
@@ -109,6 +147,7 @@
             android:layout_height="wrap_content"
             android:onClick="deleteAssessment"
             android:text="Delete" />
+
 
     </LinearLayout>
 

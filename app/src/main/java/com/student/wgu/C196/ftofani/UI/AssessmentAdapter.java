@@ -40,7 +40,6 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
                 }
             });
         }
-
     }
 
     private final LayoutInflater mInflater;
