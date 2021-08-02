@@ -142,10 +142,9 @@ public class EditAssessment extends AppCompatActivity {
                }
             }
             courseSpinner.setSelection(numCourse);
-
+*/
         }
 
-*/
 
         List<Assessment> filteredAssessments = new ArrayList<>();
         repository = new Repository(getApplication());
