@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Repository repository = new Repository(getApplication());
-        Term term = new Term(1, "1", "01-01-21", "01-02-21");
+        Term term = new Term(1, "1", "01/01/21", "01/02/21");
         repository.insert(term);
-        term = new Term(2, "2", "02-01-21", "02-02-21");
+        term = new Term(2, "2", "02/01/21", "02/02/21");
         repository.insert(term);
         Course course = new Course(1, "English", "in-progress", "01/01/21", "01/02/21", 1);
         repository.insert(course);
@@ -77,32 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-/*
-    // Create hamburger menu
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sharemenu, menu);
-        return true;
-*/
-
-
-/*
-            // Setup Notifications
-            case R.id.notify:
-                String dateFromScreen=courseDateStart.getText().toString();
-                String myFormat ="MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                Date myDate=null;
-                try {
-                    myDate=sdf.parse(dateFromScreen);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Long trigger= myDate.getTime();
-                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
-                intent.putExtra("key", "message I want to send");
-                PendingIntent sender=PendingIntent.getBroadcast(EditCourse.this, ++MainActivity.numAlert,intent, 0);
-                return true;
-*/
 
 
 /*
@@ -114,9 +88,6 @@ ctrl+alt+L ==  CLean up indentation
 <!--   --> comment out xml
 
 Change name in manifest for title bar
-
-
-
 
  */
 
@@ -147,13 +118,14 @@ Change name in manifest for title bar
 //
 //
 /*
-    Term Names: Term 1, Term 2, Spring
 
-    Course Status: in progress, completed, dropped, plan to take
-
-    Assessments: Performance or Objective
 
     Detailed: Course, Term and Assessment
+
+
+  TODO
+  clear comments in :
+    editterm
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

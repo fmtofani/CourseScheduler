@@ -50,18 +50,13 @@
                     android:layout_height="wrap_content"
                     android:text="Course Progress" />
 
-                <EditText
-                    android:id="@+id/editTextCourseProgress"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:hint="in progress" />
-
                 <Spinner
                     android:id="@+id/spinnerProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:spinnerMode="dialog" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -73,14 +68,14 @@
                     android:id="@+id/textViewCourseStartDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Course Start Date" />
+                    android:text="Start Date" />
 
                 <EditText
                     android:id="@+id/editTextCourseStartDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="Start"
-                    android:focusable="false" />
+                    android:focusable="false"
+                    android:hint="Start" />
 
             </LinearLayout>
 
@@ -93,14 +88,14 @@
                     android:id="@+id/textViewCourseEndDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Course End Date" />
+                    android:text="End Date" />
 
                 <EditText
                     android:id="@+id/editTextCourseEndDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="End"
-                    android:focusable="false" />
+                    android:focusable="false"
+                    android:hint="End"/>
 
             </LinearLayout>
 
@@ -115,12 +110,6 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="Course Term ID" />
-
-                <EditText
-                    android:id="@+id/editTextCourseTermID"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Term 1" />
 
                 <Spinner
                     android:id="@+id/spinnerTermID"
@@ -139,7 +128,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="saveCourse"
+                    android:onClick="addCourse"
                     android:text="@string/save" />
 
                 <Button
@@ -158,6 +147,6 @@
 
         </LinearLayout>
 
-
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

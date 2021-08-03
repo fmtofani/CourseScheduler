@@ -140,7 +140,7 @@ public class EditTerm extends AppCompatActivity {
     private void updateEndDate() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        editStart.setText(sdf.format(calEnd.getTime()));
+        editEnd.setText(sdf.format(calEnd.getTime()));
     }
 
     @Override

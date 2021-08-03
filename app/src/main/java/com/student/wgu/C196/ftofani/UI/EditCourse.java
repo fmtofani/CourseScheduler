@@ -197,7 +197,7 @@ public class EditCourse extends AppCompatActivity {
     private void updateEndDate() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        editStartDate.setText(sdf.format(calEnd.getTime()));
+        editEndDate.setText(sdf.format(calEnd.getTime()));
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
