@@ -25,6 +25,7 @@ import com.student.wgu.C196.ftofani.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,18 +36,13 @@ public class EditCourse extends AppCompatActivity {
 
 
     Repository repository;
-    List<Course> allCourses;
     int Id;
-    String name;
-    String progress;
-    String startDate;
-    String endDate;
+    int numTermID;
     EditText editName;
-    EditText editProgress;
     EditText editStartDate;
     EditText editEndDate;
-    EditText editCourseTermID;
     Course currentCourse;
+    Term currentTerm;
     public static int numCourses;
 
     //For Spinners
@@ -71,25 +67,30 @@ public class EditCourse extends AppCompatActivity {
         Id = getIntent().getIntExtra("courseID", -1);
 
         repository = new Repository(getApplication());
-        allCourses = repository.getAllCourses();
-        for (Course p : allCourses) {
+        for (Course p : repository.getAllCourses()) {
             if (p.getCourseID() == Id) {
                 currentCourse = p;
             }
         }
 
-//        name = getIntent().getStringExtra("name");
-//        editName.setText(name);
+        numTermID = getIntent().getIntExtra("courseTermID", -1);
+        repository = new Repository(getApplication());
+        for (Term t : repository.getAllTerms()) {
+            if (t.getTermID() == numTermID) {
+                currentTerm = t;
+            }
+        }
 
         editName = findViewById(R.id.editTextCourseName);
-        editProgress = findViewById(R.id.editTextCourseProgress);
 
+        // Setup Spinner for Types of PROGRESS
         progressSpinner = findViewById(R.id.spinnerProgress);
         List<String> progressList = new ArrayList<>();
         progressList.add("Plan-to-Take");
         progressList.add("In-Progress");
         progressList.add("Completed");
         progressList.add("Dropped");
+
         ArrayAdapter<String> progressAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, progressList);
         progressAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,8 +107,8 @@ public class EditCourse extends AppCompatActivity {
                 calStart.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                Intent intent=new Intent(EditCourse.this,MyReceiver.class);
-                intent.putExtra("key",sdf.format(calStart.getTime()));
+                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                intent.putExtra("key", sdf.format(calStart.getTime()));
                 updateStartDate();
             }
         };
@@ -132,8 +133,8 @@ public class EditCourse extends AppCompatActivity {
                 calEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                Intent intent=new Intent(EditCourse.this,MyReceiver.class);
-                intent.putExtra("key",sdf.format(calEnd.getTime()));
+                Intent intent = new Intent(EditCourse.this, MyReceiver.class);
+                intent.putExtra("key", sdf.format(calEnd.getTime()));
                 updateEndDate();
             }
 
@@ -148,24 +149,37 @@ public class EditCourse extends AppCompatActivity {
             }
         });
 
-        editCourseTermID = findViewById(R.id.editTextCourseTermID);
+        // Setup Spinner to Select TermID
         termSpinner = findViewById(R.id.spinnerTermID);
+        List<String> termList = new ArrayList<>();
         repository = new Repository(getApplication());
-        List<Term> allTerms = repository.getAllTerms();
-        ArrayAdapter<Term> termAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, allTerms);
+        for (Term p : repository.getAllTerms()) {
+            termList.add(p.getTermName());
+        }
+
+        ArrayAdapter<String> termAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, termList);
         termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         termSpinner.setAdapter(termAdapter);
 
 
         if (currentCourse != null) {
             editName.setText(currentCourse.getCourseName());
-            editProgress.setText(currentCourse.getCourseProgress());
             editStartDate.setText(currentCourse.getCourseStartDate());
             editEndDate.setText(currentCourse.getCourseEndDate());
-            editCourseTermID.setText(Integer.toString(currentCourse.getCourseTermID()));
-        }
+            // Index the Progress Spinner to the correct type if Editing a Course
+            int numType = 0;
+            if (currentCourse.getCourseProgress().equals("Plan-to-Take")) numType = 0;
+            if (currentCourse.getCourseProgress().equals("In-Progress")) numType = 1;
+            if (currentCourse.getCourseProgress().equals("Completed")) numType = 2;
+            if (currentCourse.getCourseProgress().equals("Dropped")) numType = 3;
+            progressSpinner.setSelection(numType);
 
+            // Index the TermID Spinner to the correct ID if Editing a Course
+            termSpinner.setSelection(numTermID - 1);
+
+        }
+        // Keep track of how many Courses
         List<Course> filteredCourses = new ArrayList<>();
         for (Course p : repository.getAllCourses()) {
             if (p.getCourseID() == Id) filteredCourses.add(p);
@@ -237,30 +251,75 @@ public class EditCourse extends AppCompatActivity {
                 AlarmManager alarmManager1 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, trigger1, sender1);
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
-
     }
 
+    public void addCourse(View view) throws ParseException {
+        String tryName = editName.getText().toString();
+        String goodName = "";
+        if (tryName.trim().length() == 0) {
+            Toast.makeText(getApplicationContext(), "Please enter a NAME", Toast.LENGTH_LONG).show();
+            return;
+        } else goodName = tryName;
 
-    public void addCourse(View view) {
+
+        // Make sure Start date comes before End date
+        String startDate = editStartDate.getText().toString();
+        String endDate = editEndDate.getText().toString();
+        if(!checkDate(startDate, endDate)) {
+            Toast.makeText(getApplicationContext(), "Start Date must come BEFORE End Date", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String progress = String.valueOf(progressSpinner.getSelectedItem());
+        String termName = (String) termSpinner.getSelectedItem();
+        int termID = -1;
+        repository = new Repository(getApplication());
+        for (Term p : repository.getAllTerms()) {
+            if (p.getTermName().equals(termName)) {
+                termID = p.getTermID();
+            }
+        }
+
         if (Id == -1) {
-            Id = allCourses.get(allCourses.size() - 1).getCourseID();
-            Course p = new Course(++Id, editName.getText().toString(),
-                    editProgress.getText().toString(), editStartDate.getText().toString(),
-                    editEndDate.getText().toString(),
-                    Integer.parseInt(editCourseTermID.getText().toString()));
+            Id = setCourseID();
+            Course p = new Course(Id, goodName, progress, startDate, endDate, termID);
             repository.insert(p);
         } else {
-            Course p = new Course(++Id, editName.getText().toString(),
-                    editProgress.getText().toString(), editStartDate.getText().toString(),
-                    editEndDate.getText().toString(),
-                    Integer.parseInt(editCourseTermID.getText().toString()));
+            Course p = new Course(Id, goodName, progress, startDate, endDate, termID);
             repository.update(p);
         }
         Intent intent = new Intent(EditCourse.this, ListCourse.class);
         startActivity(intent);
+    }
+
+
+    public boolean checkDate(String start, String end) throws ParseException {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
+            Date date1 = sdf.parse(start);
+            Date date2 = sdf.parse(end);
+
+            int result = date1.compareTo(date2);
+
+            if (result == 0) {
+                return false;
+            } else if (result > 0) {
+                return false;
+            }
+            return true;
+    }
+
+    int num = 0;
+    public int setCourseID() {
+        num = 0;
+        for (Course p : repository.getAllCourses()) {
+            if (p.getCourseID() >= num) {
+                num = p.getCourseID();
+                num++;
+            }
+        }
+        return num;
     }
 
     public void deleteCourse(View view) {
@@ -280,72 +339,9 @@ public class EditCourse extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void goToMentor(View view) {
         Intent intent = new Intent(EditCourse.this, ListMentor.class);
         startActivity(intent);
-    }
-
-    public void saveCourse(View view) {
-        // Add checks and balances
-        if (Id == -1) {
-            Id = setCourseID();
-            int goodCourseID = 0; //Integer.parseInt(editCourseID.getText().toString());
-            String goodName = tryCourseName();
-            String goodProgress = ""; //editProgress.getText().toString()
-            String goodStartDate = ""; //editStartDate.getText().toString()
-            String goodEndDate = ""; //editEndDate.getText().toString()
-            int goodCourseTermID = 0; // Integer.parseInt(editCourseID.getText().toString());
-
-            Course p = new Course(++Id, goodName,
-                    goodProgress, goodStartDate, goodEndDate, goodCourseTermID);
-            repository.insert(p);
-        } else {
-            Course p = new Course(Id, editName.getText().toString(),
-                    editProgress.getText().toString(), editStartDate.getText().toString(),
-                    editEndDate.getText().toString(),
-                    Integer.parseInt(editCourseTermID.getText().toString()));
-            repository.update(p);
-        }
-        Intent intent = new Intent(EditCourse.this, ListCourse.class);
-        startActivity(intent);
-    }
-
-    public int setCourseID(){
-        int num=0;
-        for (Course p : allCourses) {
-            if (p.getCourseID() > num) {
-                num++;
-            }
-        }
-        return num;
-    }
-
-    public String tryCourseName() {
-        String goodName="";
-        if (editName.getText().toString() == null) {
-            Toast.makeText(getApplicationContext(),"Please enter a name",Toast.LENGTH_LONG).show();
-        }
-        else {
-            goodName = editName.getText().toString();
-        }
-        return goodName;
-    }
-
-    public Date tryStartDate() {
-        Date goodStartDate = null;
-        return goodStartDate;
-    }
-
-    public Date tryEndDate() {
-        //make sure end date is after start
-        Date goodEndDate = null;
-        return goodEndDate;
-    }
-
-    public int tryCourseTermID() {
-        int goodCourseTermID = 0;
-        return goodCourseTermID;
     }
 
 

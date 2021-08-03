@@ -42,7 +42,7 @@ public class ListMentor extends AppCompatActivity {
         return super.onOptionsItemSelected(Item);
     }
 
-    public void goToEditNotes(View view) {
+    public void goToEditMentor(View view) {
         Intent intent = new Intent(ListMentor.this, EditMentor.class);
         startActivity(intent);
     }

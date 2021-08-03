@@ -81,6 +81,7 @@ public class EditAssessment extends AppCompatActivity {
         List<String> typeList = new ArrayList<>();
         typeList.add("Performance");
         typeList.add("Objective");
+
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, typeList);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -221,7 +222,7 @@ public class EditAssessment extends AppCompatActivity {
 
         if (Id == -1) {
             Id = setAssessmentID();
-            Assessment p = new Assessment(setAssessmentID(), goodName, type, goodDate, courseID);
+            Assessment p = new Assessment(Id, goodName, type, goodDate, courseID);
             repository.insert(p);
         } else {
             Assessment p = new Assessment(Id, goodName, type, goodDate, courseID);

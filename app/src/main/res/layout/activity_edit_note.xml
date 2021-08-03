@@ -64,14 +64,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Body" />
+                android:text="Course ID" />
 
-            <EditText
-                android:id="@+id/editTextNoteCourseID"
+            <Spinner
+                android:id="@+id/spinnerNoteCourseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10" />
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </LinearLayout>
 
         <Button

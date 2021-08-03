@@ -63,6 +63,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ListAssessment.class);
         startActivity(intent);
     }
+
+    public void goToMentor(View view) {
+        Intent intent = new Intent(MainActivity.this, ListMentor.class);
+        startActivity(intent);
+    }
+
+    public void goToNote(View view) {
+        Intent intent = new Intent(MainActivity.this, ListNote.class);
+        startActivity(intent);
+    }
+
+
 }
 
 /*
